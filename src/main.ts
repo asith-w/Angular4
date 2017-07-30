@@ -9,3 +9,16 @@ if (environment.production) {
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule);
+
+
+
+if (window.hasOwnProperty('Office') && window.hasOwnProperty('Outlook')) {
+
+  // Application-specific initialization code goes into a function that is
+  // assigned to the Office.initialize event and runs after the Office.js initializes.
+  // Bootstrapping of the AppModule must come AFTER Office has initialized.
+  Office.initialize = reason => {
+    platformBrowserDynamic().bootstrapModule(AppModule);
+
+  }
+}
